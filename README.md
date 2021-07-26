@@ -1,5 +1,6 @@
 # spring-ioc-learn
-spring核心编程思想学习
+
+spring核心编程思想学习笔记+代码
 
 ## [第一章 Spring核心特性](https://github.com/wkk1994/spring-ioc-learn/blob/master/第一章Spring核心特性.md)
 
