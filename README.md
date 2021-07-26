@@ -31,3 +31,5 @@ spring核心编程思想学习笔记+代码
 ## [第十四章 Spring数据绑定](https://github.com/wkk1994/spring-ioc-learn/blob/master/validation)
 
 ## [第十五章 Spring类型转换](https://github.com/wkk1994/spring-ioc-learn/blob/master/data-binding)
+
+## [第十六章 Spring泛型处理](https://github.com/wkk1994/spring-ioc-learn/blob/master/generic)
