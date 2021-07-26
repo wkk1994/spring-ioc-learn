@@ -37,3 +37,38 @@ Java泛型反射API：
 * 泛型声明（Generics Declaration）: java.lang.reflect.GenericDeclaration
 
 Java泛型API示例：[GenericAPIDemo.java](https://github.com/wkk1994/spring-ioc-learn/blob/master/generic/src/main/java/com/wkk/learn/spring/ioc/generic/GenericAPIDemo.java)
+
+## Spring泛型类型辅助类
+
+核心API：org.springframework.core.GenericTypeResolver
+
+* 版本支持：2.5.1+
+* 处理类型（Type）相关的方法
+  * resolveReturnType：获取方法返还值类型。
+  * resolveType
+* 处理泛型参数类型（ParameterizedType）的相关方法
+  * resolveReturnTypeArgument
+  * resolveTypeArgument
+  * resolveTypeArguments
+* 处理泛型类型变量（TypeVariable）相关方法
+  * getTypeVariableMap
+
+Spring泛型类型处理示例：[GenericTypeResolverDemo.java](https://github.com/wkk1994/spring-ioc-learn/blob/master/generic/src/main/java/com/wkk/learn/spring/ioc/generic/GenericTypeResolverDemo.java)
+
+> 在获取泛型参数类型时，泛型参数必须具体化才能获取到值，因为泛型参数具体化，字节码才有值。
+
+## Spring泛型集合类型辅助类
+
+核心API：org.springframework.core.GenericCollectionTypeResolver
+
+使用GenericCollectionTypeResolver类可以获取到集合类型中泛型的具体化，比如List\<String>，返回的是String.class。
+
+* 版本支持：[2.0, 4.3]
+* 替换实现：org.springframework.core.ResolvableType，5.0版本开始使用ResolvableType替换实现。
+* 处理 Collection 相关
+  * getCollection*Type
+* 处理 Map 相关
+  * getMapKey*Type
+  * getMapValue*Type
+
+Spring泛型集合类型处理示例：[GenericCollectionTypeResolverDemo.java](https://github.com/wkk1994/spring-ioc-learn/blob/master/generic/src/main/java/com/wkk/learn/spring/ioc/generic/GenericCollectionTypeResolverDemo.java)
