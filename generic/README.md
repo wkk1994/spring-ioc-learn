@@ -115,3 +115,23 @@ ResolvableType接口即使再强大，也无法跳出Java泛型语言特性的�
 * 局限二：ResolvableType无法处理非具体化的ParameterizedType
 
 实际上ResolvableType是基于Java泛型API的基础上做了一些封装和优化，简化了API的调用，以及去除了一些不必要的API。
+
+## 面试题
+
+* Java 泛型擦写发生在编译时还是运行时？
+
+  编译时会进行类型检查，生成的字节码中没有泛型了，我的理解就是运行时擦写。
+
+* 请介绍 Java 5 Type 类型的派生类或接口？
+
+  * java.lang.Class
+  * java.lang.reflect.GenericArrayType
+  * java.lang.reflect.ParameterizedType
+  * java.lang.reflect.TypeVariable
+  * java.lang.reflect.WildcardType
+
+* 请说明ResolvableType的设计优势？
+
+  * 简化 Java 5 Type API 开发，屏蔽复杂 API 的运用，如ParameterizedType
+  * 不变性设计（Immutability）：ResolvableType的很多内部属性都是final的。
+  * Fluent API 设计（Builder 模式），链式（流式）编程，每个方法在调用后都会返回一个新的/老的ResolvableType实例。
