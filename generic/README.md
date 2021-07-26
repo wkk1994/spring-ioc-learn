@@ -72,3 +72,46 @@ Spring泛型类型处理示例：[GenericTypeResolverDemo.java](https://github.c
   * getMapValue*Type
 
 Spring泛型集合类型处理示例：[GenericCollectionTypeResolverDemo.java](https://github.com/wkk1994/spring-ioc-learn/blob/master/generic/src/main/java/com/wkk/learn/spring/ioc/generic/GenericCollectionTypeResolverDemo.java)
+
+## Spring方法参数封装
+
+核心 API - org.springframework.core.MethodParameter
+
+MethodParameter既可以表示方法参数也可以表示构造器参数，在SpringMVC中又用来表示返回值类型，但是一个MethodParameter实例只能表示一种情况。
+
+* 起始版本：2.0+
+* 元信息：
+  * 关联的方法 - Method
+  * 关联的构造器 - Constructor
+  * 构造器或方法参数索引 - parameterIndex
+  * 构造器或方法参数类型 - parameterType
+  * 构造器或方法参数泛型类型 - genericParameterType
+  * 构造器或方法参数参数名称 - parameterName，在jdk8之前，接口中的方法参数名称在编译后是不保存的，在jdk8之后可以在编译时添加参数，保留方法参数。
+  * 所在的类 - containingClass
+
+## Spring 4.0泛型优化实现ResolvableType
+
+核心API：org.springframework.core.ResolvableType
+
+* 起始版本：4.0
+* GenericTypeResolver和GenericCollectionTypeResolver的替代者
+* 工厂方法：for*方法：通过工厂方法获取到ResolvableType示例
+  * forClass(Class)
+  * forField(Field)
+  * forMethodParameter
+  * forType
+* 转换方法：as*方法：转换成指定的类型
+  * asMap：转换成Map类型，必须实现了Map，否则为？
+  * asCollection：转换为Collection类型，必须实现了Collection，否则为？
+* 处理方法：resolve*方法：用来转换成指定的Raw Type类型
+
+ResolvableType示例：[ResolvableTypeDemo.java](https://github.com/wkk1994/spring-ioc-learn/blob/master/generic/src/main/java/com/wkk/learn/spring/ioc/generic/ResolvableTypeDemo.java)
+
+## ResolvableType的局限性
+
+ResolvableType接口即使再强大，也无法跳出Java泛型语言特性的一些局限性，这些局限性有：
+
+* 局限一：ResolvableType无法处理泛型擦写
+* 局限二：ResolvableType无法处理非具体化的ParameterizedType
+
+实际上ResolvableType是基于Java泛型API的基础上做了一些封装和优化，简化了API的调用，以及去除了一些不必要的API。
